@@ -49,6 +49,13 @@ describe "validations" do
   	  	expect(subject.errors_on(coordinate)).to include("is not a number")
   	  end
   	end
+
+  	context "when #{coordinate} is an acceptable value" do
+  	  subject { Location.new(coordinate => 42) }
+  	  it "should have no errors for #{coordinate}" do
+  	  	expect(subject).to have(0).errors_on(coordinate)
+  	  end
+  	end
   end
 end
 
