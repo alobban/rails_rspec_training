@@ -44,7 +44,7 @@ describe "validations" do
   	end
 
   	context "when #{coordinate} isn't numeric" do
-  	  subject { Location.new(coordinate = 'forty-two') }
+  	  subject { Location.new(coordinate => 'forty-two') }
   	  it "shouldn't all non-numeric #{coordinate}" do
   	  	expect(subject.errors_on(coordinate)).to include("is not a number")
   	  end
