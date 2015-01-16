@@ -1,5 +1,5 @@
 class Location < ActiveRecord::Base
-  validates :latitude, :longitude, presence: true
+  validates :latitude, :longitude, presence: true, numericality: true
 
   attr_accessor :latitude, :longitude
 
