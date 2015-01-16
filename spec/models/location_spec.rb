@@ -39,7 +39,14 @@ describe "validations" do
   	context "when #{coordinate} is nil" do
   	  subject { Location.new(coordinate => nil) }
   	  it "shouldn't allow blank #{coordinate}" do
-  	  	expect(subject.errors_on(coordinate)) .to include("can't be blank")
+  	  	expect(subject.errors_on(coordinate)).to include("can't be blank")
+  	  end
+  	end
+
+  	context "when #{coordinate} isn't numeric" do
+  	  subject { Location.new(coordinate = 'forty-two') }
+  	  it "shouldn't all non-numeric #{coordinate}" do
+  	  	expect(subject.errors_on(coordinate)).to include("is not a number")
   	  end
   	end
   end
