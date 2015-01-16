@@ -35,7 +35,7 @@ end
 
 describe "validations" do
   before { subject.valid? }
-  [ :latitude ].each do |coordinate|
+  [ :latitude, :longitude ].each do |coordinate|
   	context "when #{coordinate} is nil" do
   	  subject { Location.new(coordinate => nil) }
   	  it "shouldn't allow blank #{coordinate}" do

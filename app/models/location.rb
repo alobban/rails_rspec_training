@@ -1,6 +1,6 @@
 class Location < ActiveRecord::Base
-  validates :latitude, presence: true
-  
+  validates :latitude, :longitude, presence: true
+
   attr_accessor :latitude, :longitude
 
   R = 3_959 # Earth's radius in miles, approx
