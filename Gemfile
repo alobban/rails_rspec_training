@@ -45,5 +45,6 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'rspec-its'
   gem 'rspec-collection_matchers'
+  gem 'rspec-activemodel-mocks'
 end
 
