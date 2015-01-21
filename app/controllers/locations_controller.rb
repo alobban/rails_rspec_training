@@ -28,6 +28,13 @@ class LocationsController < ApplicationController
   	end
   end
 
+  def near
+  	location = Location.find(params[:id].to_i)
+  	unless location.near?(params[:latitude].to_f, params[:longitude].to_f, 1.0)
+  	  render :far
+  	end
+  end
+
   private
 
   def location_params

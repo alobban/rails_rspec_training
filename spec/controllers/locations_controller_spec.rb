@@ -88,4 +88,26 @@ RSpec.describe LocationsController, :type => :controller do
   	  end
   	end
   end
+
+  describe "#near" do
+  	let(:location) { double("Location") }
+  	before do
+  	  Location.should_receive(:find).with(42).and_return(location)
+  	end
+  	context "when the supplied coordinates are near" do
+  	  it "renders the near view" do
+  	  	location.should_receive(:near?).with(25.0, 62.1, 1.0).and_return(true)
+  	  	post :near, id: "42", latitude: 25.0, longitude: 62.1
+  	  	response.should render_template("near")
+  	  end
+  	end
+
+  	context "when the supplied coordinates are far" do
+  	  it "renders the far view" do
+  	  	location.should_receive(:near?).with(25.0, 62.1, 1.0).and_return(false)
+  	  	post :near, id: "42", latitude: 25.0, longitude: 62.1
+  	  	response.should render_template("far")
+  	  end
+  	end
+  end
 end
